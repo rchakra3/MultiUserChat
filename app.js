@@ -62,14 +62,11 @@ app.use(function(err, req, res, next) {
 
 var server=require('http').Server(app);
 var port=3000;
+
+var io=require('socket.io')(server);
 server.listen(port);
 
-var sio=require('socket.io')(server);
-
-
-sio.on('Connection',fuction(socket){
-
-    //do something???
+io.on('connection',function(socket){
 
     socket.on('newMessage',function(message){
         //the message should be an object{username,text}
@@ -77,7 +74,7 @@ sio.on('Connection',fuction(socket){
     });
 
 
-})
+});
 
 
 module.exports = app;

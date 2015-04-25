@@ -1,5 +1,30 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div(id="mainDiv")
+    h1= title
+    p Welcome to the #{title}
+    div(class="panel panel-default scrollable" id="chatScroll")
+      div(id='chatDiv' class="panel-body")
+        ul(id='ChatList')
+    div(id='userDiv')
+      input(type="message" class="form-control" id="userMessageArea" placeholder="Enter a message..")
+  div(id="myModal" class="modal fade" data-backdrop="static" data-keyboard="false")
+    div(class="modal-dialog")
+      div(class="modal-content")
+        div(class="modal-header")
+          button(type="button" class="close" data-dismiss="modal" aria-hidden="true")
+                h4(class="modal-title") Username
+            
+            div(class="modal-body")
+                p Please Enter a username
+            
+            div(class="modal-footer")
+                input(type="message" class="form-control" value="Anon" id="usernameInput")
+                button(type="button" id="usernameButton" class="btn btn-primary" data-dismiss="modal") Save
+
+block scripts
+  script(src='javascripts/jquery.min.js')
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/client.socket.io.js')

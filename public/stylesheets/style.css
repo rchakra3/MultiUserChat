@@ -1,8 +1,16 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.scrollable{
+   overflow: auto;
+   height: 400px;
 }
 
-a {
-  color: #00B7FF;
+#mainDiv{
+	width:800px;
+	margin-left:auto;
+	margin-right: auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
 }
