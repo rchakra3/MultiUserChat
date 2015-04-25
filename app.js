@@ -1,3 +1,5 @@
+/**************AUTO GENERATED CODE*********************/
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -59,22 +61,25 @@ app.use(function(err, req, res, next) {
 
 /*****Custom code*****/
 
-
+//create a server object, define a port
 var server=require('http').Server(app);
 var port=3000;
 
+//attach the socket to the server
 var io=require('socket.io')(server);
+//server starts listening on the port defined
 server.listen(port);
 
+//on a new client connection
 io.on('connection',function(socket){
-
+    //if there's a new incoming message, broadcast it to all other connected clients except the one which sent the message
     socket.on('newMessage',function(message){
-        //the message should be an object{username,text}
+        //the message should be an object{username,text,color}
         socket.broadcast.emit('insertMessage',message);
     });
 
 
 });
 
-
+//export the app
 module.exports = app;
